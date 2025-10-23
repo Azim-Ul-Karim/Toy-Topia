@@ -1,4 +1,6 @@
 import React from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { IoEnterOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
 
 const Login = () => {
@@ -14,7 +16,7 @@ const Login = () => {
 
                 <fieldset className='fieldset'>
                     <label className="label text-sm text-[#720c57] font-semibold">
-                        Email 
+                        Email
                     </label>
                     <input
                         type="email"
@@ -22,7 +24,7 @@ const Login = () => {
                         className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
                         placeholder="Enter your email address" />
 
-                    <label className="label mt-4 text-sm text-[#720c57]  font-semibold">
+                    <label className="label mt-2 text-sm text-[#720c57]  font-semibold">
                         Password
                     </label>
                     <input
@@ -35,7 +37,17 @@ const Login = () => {
                         Forgot password?
                     </Link>
 
-                    <button type='submit' className="btn text-base bg-[#48675e] text-white mt-4">Login</button>
+                    <button type='submit' className="btn flex items-center gap-2 text-base bg-[#48675e] text-white mt-4">
+                        <IoEnterOutline></IoEnterOutline>
+                        Login
+                    </button>
+
+                    <p className='my-2 text-center'>Or</p>
+
+                    <button className="btn flex items-center gap-2 bg-white text-black shadow-sm border-[#e5e5e5]">
+                        <FcGoogle size={18}></FcGoogle>
+                        Login with Google
+                    </button>
 
                     <p className='mt-2.5 text-sm'>
                         Don't Have An Account? <Link className='text-[#be2608] font-semibold' to='/register'>Register</Link>
