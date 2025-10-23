@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const { createUser, setUser } = useContext(AuthContext);
+    const { createUser, setUser, googleUser } = useContext(AuthContext);
 
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -16,7 +16,6 @@ const Register = () => {
         e.preventDefault();
 
         const form = e.target;
-
         // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
@@ -51,9 +50,22 @@ const Register = () => {
             })
     }
 
+    const handleGoogleRegister = () => {
+        googleUser()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setUser(user);
+                toast.success('Registration Successful!');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className='bg-linear-to-br from-[#F3E5F5] to-white flex justify-center items-center'>
-            <form onSubmit={handleRegister} className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
+            <div className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
                 <h1 className='text-center font-bold text-3xl text-[#656e2f]'>
                     Join The Fun!
                 </h1>
@@ -61,74 +73,78 @@ const Register = () => {
                     Create your account and start exploring...
                 </p>
 
-                <fieldset className='fieldset'>
-                    <label className="label text-sm text-[#720c57] font-semibold">
-                        Name
-                    </label>
-                    <input
-                        type="text"
-                        name='name'
-                        className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your name"
-                    />
-
-                    <label className="label mt-2 text-sm text-[#720c57] font-semibold">
-                        Email
-                    </label>
-                    <input
-                        type="email"
-                        name='email'
-                        className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your email address"
-                    />
-
-                    <label className="label mt-2 text-sm text-[#720c57] font-semibold">
-                        Photo URL
-                    </label>
-                    <input
-                        type="url"
-                        name='photo'
-                        className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your photo url"
-                    />
-
-                    <label className="label mt-2 text-sm text-[#720c57]  font-semibold">
-                        Password
-                    </label>
-                    <div className="relative">
+                <form onSubmit={handleRegister}>
+                    <fieldset className='fieldset'>
+                        <label className="label text-sm text-[#720c57] font-semibold">
+                            Name
+                        </label>
                         <input
-                            type={showPassword ? 'text' : 'password'}
-                            name="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none pr-3"
-                            placeholder="Enter your password"
+                            type="text"
+                            name='name'
+                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
+                            placeholder="Enter your name"
                         />
-                        <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-3 text-gray-500 cursor-pointer"
-                        >
-                            {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
-                        </span>
-                    </div>
 
-                    <button type='submit' className="btn flex items-center gap-2 text-base bg-[#48675e] text-white mt-4">
-                        <FaUserPlus></FaUserPlus>
-                        Register
-                    </button>
+                        <label className="label mt-2 text-sm text-[#720c57] font-semibold">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            name='email'
+                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
+                            placeholder="Enter your email address"
+                        />
 
+                        <label className="label mt-2 text-sm text-[#720c57] font-semibold">
+                            Photo URL
+                        </label>
+                        <input
+                            type="url"
+                            name='photo'
+                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
+                            placeholder="Enter your photo url"
+                        />
+
+                        <label className="label mt-2 text-sm text-[#720c57]  font-semibold">
+                            Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none pr-3"
+                                placeholder="Enter your password"
+                            />
+                            <span
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                            >
+                                {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
+                            </span>
+                        </div>
+
+                        <button type='submit' className="btn flex items-center gap-2 text-base bg-[#48675e] text-white mt-4">
+                            <FaUserPlus></FaUserPlus>
+                            Register
+                        </button>
+                    </fieldset>
+                </form>
+
+                <fieldset className='fieldset'>
                     <p className='my-2 text-center'>Or</p>
 
-                    <button className="btn flex items-center gap-2 bg-white text-black shadow-sm border-[#e5e5e5]">
+                    <button onClick={handleGoogleRegister} className="btn flex items-center gap-2 bg-white text-black shadow-sm border-[#e5e5e5]">
                         <FcGoogle size={18}></FcGoogle>
-                        Register with Google
+                        Continue with Google
                     </button>
 
                     <p className='mt-2.5 text-sm'>
                         Already Have An Account? <Link className='text-[#b4063a] font-semibold' to='/login'>Login</Link>
                     </p>
                 </fieldset>
-            </form>
+            </div>
             <ToastContainer></ToastContainer>
         </div>
     );
