@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import PathError from "./PathError";
 import Root from "../Layouts/Root";
+import Home from "../Pages/Home/Home";
+import Login from "../Pages/Authentication/Login";
+import Register from "../Pages/Authentication/Register";
+import Profile from "../Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -8,7 +12,22 @@ export const router = createBrowserRouter([
         Component: Root,
         errorElement: <PathError></PathError>,
         children: [
-
+            {
+                index: true,
+                Component: Home
+            },
+            {
+                path: 'login',
+                Component: Login
+            },
+            {
+                path: 'register',
+                Component: Register
+            },
+            {
+                path: 'profile',
+                Component: Profile
+            }
         ]
     }
 ])
