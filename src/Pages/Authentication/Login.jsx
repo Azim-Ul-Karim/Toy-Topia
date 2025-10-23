@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { use, useState } from 'react';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEnterOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthContext';
 
 const Login = () => {
+
+    const { loginUser,setUser } = use(AuthContext);
+
+    const handleLogin = e => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        loginUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setUser(user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
-        <div className='bg-linear-to-br from-[#F3E5F5] to-white min-h-screen flex justify-center items-center'>
-            <form className='w-1/2 lg:w-1/3 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
+        <div className='bg-linear-to-br from-[#F3E5F5] to-white flex justify-center items-center'>
+            <form onSubmit={handleLogin} className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
                 <h1 className='text-center font-bold text-3xl text-[#617d70]'>
                     Welcome Back!
                 </h1>
@@ -22,16 +48,26 @@ const Login = () => {
                         type="email"
                         name='email'
                         className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your email address" />
+                        placeholder="Enter your email address"
+                    />
 
-                    <label className="label mt-2 text-sm text-[#720c57]  font-semibold">
+                    <label className="label mt-2 text-sm text-[#720c57] font-semibold">
                         Password
                     </label>
-                    <input
-                        type="password"
-                        name='password'
-                        className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your password" />
+                    <div className="relative">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name='password'
+                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none pr-3"
+                            placeholder="Enter your password"
+                        />
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                        >
+                            {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
+                        </span>
+                    </div>
 
                     <Link to='' className='my-2'>
                         Forgot password?

@@ -1,12 +1,59 @@
-import React from 'react';
-import { FaUserPlus } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaRegEye, FaRegEyeSlash, FaUserPlus } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
+
+    const { createUser, setUser } = useContext(AuthContext);
+
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleRegister = e => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        // const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // const photo = form.photo.value;
+
+        const lengthPattern = /^.{6,}$/;
+        const upperPattern = /[A-Z]/;
+        const lowerPattern = /[a-z]/;
+
+        if (!lengthPattern.test(password)) {
+            toast.error('Password must be at least 6 characters long!');
+            return;
+        }
+        else if (!upperPattern.test(password)) {
+            toast.error('Password must include an uppercase letter.');
+            return;
+        }
+        else if (!lowerPattern.test(password)) {
+            toast.error('Password must include a lowercase letter.');
+            return;
+        }
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setUser(user);
+                toast.success('Registration Successful!');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
-        <div className='bg-linear-to-br from-[#F3E5F5] to-white min-h-screen flex justify-center items-center'>
-            <form className='w-1/2 lg:w-1/3 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
+        <div className='bg-linear-to-br from-[#F3E5F5] to-white flex justify-center items-center'>
+            <form onSubmit={handleRegister} className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
                 <h1 className='text-center font-bold text-3xl text-[#656e2f]'>
                     Join The Fun!
                 </h1>
@@ -22,7 +69,8 @@ const Register = () => {
                         type="text"
                         name='name'
                         className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your name" />
+                        placeholder="Enter your name"
+                    />
 
                     <label className="label mt-2 text-sm text-[#720c57] font-semibold">
                         Email
@@ -31,7 +79,8 @@ const Register = () => {
                         type="email"
                         name='email'
                         className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your email address" />
+                        placeholder="Enter your email address"
+                    />
 
                     <label className="label mt-2 text-sm text-[#720c57] font-semibold">
                         Photo URL
@@ -40,16 +89,28 @@ const Register = () => {
                         type="url"
                         name='photo'
                         className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your photo url" />
+                        placeholder="Enter your photo url"
+                    />
 
                     <label className="label mt-2 text-sm text-[#720c57]  font-semibold">
                         Password
                     </label>
-                    <input
-                        type="password"
-                        name='password'
-                        className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                        placeholder="Enter your password" />
+                    <div className="relative">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none pr-3"
+                            placeholder="Enter your password"
+                        />
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-3 text-gray-500 cursor-pointer"
+                        >
+                            {showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>}
+                        </span>
+                    </div>
 
                     <button type='submit' className="btn flex items-center gap-2 text-base bg-[#48675e] text-white mt-4">
                         <FaUserPlus></FaUserPlus>
@@ -68,6 +129,7 @@ const Register = () => {
                     </p>
                 </fieldset>
             </form>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
