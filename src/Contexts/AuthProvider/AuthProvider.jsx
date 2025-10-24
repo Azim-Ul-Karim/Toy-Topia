@@ -36,13 +36,14 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const logoutUser = () => {
-        setLoading(true);
         return signOut(auth);
     }
 
     const authInfo = {
         user,
         setUser,
+        loading,
+        setLoading,
         createUser,
         googleUser,
         loginUser,

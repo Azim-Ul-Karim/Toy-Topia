@@ -5,6 +5,8 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import Profile from "../Pages/Profile/Profile";
+import Loading from "../Components/Loading";
+import Toys from "../Pages/Toys/Toys";
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +16,13 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Home
+                Component: Home,
+                loader: () => fetch(`/Toys.json`)
+            },
+            {
+                path: 'toys',
+                Component: Toys,
+                loader: () => fetch(`/Toys.json`)
             },
             {
                 path: 'login',

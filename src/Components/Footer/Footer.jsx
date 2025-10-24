@@ -1,4 +1,7 @@
 import React from 'react';
+import { FaFacebookF, FaWhatsapp } from 'react-icons/fa';
+import { IoLogoYoutube } from 'react-icons/io5';
+import { TfiEmail } from 'react-icons/tfi';
 import { Link } from 'react-router';
 
 const Footer = () => {
@@ -20,7 +23,7 @@ const Footer = () => {
                     </h3>
                     <div className='flex flex-col gap-1.5 mt-4 text-accent'>
                         <Link to='/'>Home</Link>
-                        <Link to='/'>Toys</Link>
+                        <Link to='/toys'>Toys</Link>
                         <Link to='/login'>Login</Link>
                     </div>
                 </div>
@@ -37,14 +40,14 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h3 className='text-lg font-semibold'>
+                    <h3 className='text-lg font-medium'>
                         Follow Us
                     </h3>
                     <div className='flex gap-1.5 mt-4 text-accent'>
-                        <Link to='/'>Home</Link>
-                        <Link to='/'>Home</Link>
-                        <Link to='/'>Home</Link>
-                        <Link to='/'>Login</Link>
+                        <Link to='https://workspace.google.com/intl/en-US/gmail/'><TfiEmail></TfiEmail></Link>
+                        <Link to='https://www.facebook.com/'><FaFacebookF></FaFacebookF></Link>
+                        <Link to='https://www.whatsapp.com/'><FaWhatsapp></FaWhatsapp></Link>
+                        <Link to='https://www.youtube.com/'><IoLogoYoutube></IoLogoYoutube></Link>
                     </div>
                 </div>
             </div>
@@ -53,7 +56,7 @@ const Footer = () => {
                     Made with 💖 for families everywhere.
                 </p>
                 <p className='text-accent mt-1'>
-                    &copy; 2025 <span className='font-medium text-[#cb2fa2b4]'>Toy Topia</span>. All rights reserved.
+                    &copy; 2025 <span className='font-medium text-[#984a7b]'>Toy Topia</span>. All rights reserved.
                 </p>
             </div>
         </section>
