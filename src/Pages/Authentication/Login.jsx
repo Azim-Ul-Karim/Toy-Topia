@@ -2,14 +2,16 @@ import React, { use, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEnterOutline } from 'react-icons/io5';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthContext';
 
 const Login = () => {
 
     const { loginUser, setUser, googleUser } = use(AuthContext);
-
+    const location = useLocation();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('');
 
     const handleLogin = e => {
         e.preventDefault();
@@ -22,6 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(`${location.state ? location.state : '/'}`)
                 setUser(user);
             })
             .catch(error => {
@@ -59,6 +62,8 @@ const Login = () => {
                         <input
                             type="email"
                             name='email'
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
                             placeholder="Enter your email address"
                         />
@@ -81,7 +86,7 @@ const Login = () => {
                             </span>
                         </div>
 
-                        <Link to='' className='my-2'>
+                        <Link to='/forget-password' state={{ email }} className='my-2 text-[#be2608]'>
                             Forgot password?
                         </Link>
 

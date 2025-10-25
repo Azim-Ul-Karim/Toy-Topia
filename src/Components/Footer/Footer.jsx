@@ -9,9 +9,11 @@ const Footer = () => {
         <section className='bg-linear-to-br from-[#FFF3E0] via-[#f3f5e4] to-[#F3E5F5]'>
             <div className='grid grid-cols-4 gap-16 w-11/12 mx-auto p-4 md:py-8'>
                 <div>
-                    <h2 className='bagel-fat-one-regular font-bold text-2xl md:text-3xl lg:text-4xl'>
-                        <span className='text-[#9bc1d3]'>Toy</span> <span className='text-[#978955]'>Topia</span>
-                    </h2>
+                    <Link to='/'>
+                        <h2 className='bagel-fat-one-regular font-bold text-2xl md:text-3xl lg:text-4xl'>
+                            <span className='text-[#9bc1d3]'>Toy</span> <span className='text-[#978955]'>Topia</span>
+                        </h2>
+                    </Link>
                     <p className='mt-6 text-justify text-accent'>
                         A vibrant and playful online marketplace for kids' toys, encouraging families to discover and support local toy sellers.
                     </p>

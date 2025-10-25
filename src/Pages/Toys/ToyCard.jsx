@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { GoPackage } from 'react-icons/go';
+import { Link } from 'react-router';
 
 const ToyCard = ({ toy }) => {
 
-    const { pictureURL, toyName, rating, price, availableQuantity } = toy;
+    const { toyId, pictureURL, toyName, rating, price, availableQuantity } = toy;
 
     return (
         <div className="bg-white rounded-xl shadow-md border border-pink-200 overflow-hidden">
@@ -32,9 +33,11 @@ const ToyCard = ({ toy }) => {
                     </div>
                 </div>
 
-                <button className="w-full mt-3 bg-linear-to-r from-[#b4a27d] to-[#776288] text-white py-2 rounded-full font-medium">
-                    View More
-                </button>
+                <Link to={`/toy-details/${toyId}`}>
+                    <button className="w-full mt-3 bg-linear-to-r from-[#b4a27d] to-[#776288] text-white py-2 rounded-full font-medium cursor-pointer">
+                        View More
+                    </button>
+                </Link>
             </div>
         </div>
     );

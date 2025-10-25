@@ -1,25 +1,27 @@
 import React, { useContext, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash, FaUserPlus } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthContext';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const { createUser, setUser, googleUser } = useContext(AuthContext);
+    const { createUser, setUser, googleUser, updateUser } = useContext(AuthContext);
 
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
 
         const form = e.target;
-        // const name = form.name.value;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // const photo = form.photo.value;
+        const photo = form.photo.value;
 
         const lengthPattern = /^.{6,}$/;
         const upperPattern = /[A-Z]/;
@@ -42,8 +44,16 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setUser(user);
-                toast.success('Registration Successful!');
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: photo });
+                        toast.success('Registration Successful!');
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        setUser(user);
+                    })
             })
             .catch(error => {
                 console.log(error);
