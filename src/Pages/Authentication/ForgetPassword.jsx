@@ -23,8 +23,11 @@ const ForgetPassword = () => {
 
     return (
         <div className='flex justify-center items-center min-h-screen bg-linear-to-br from-[#F3E5F5] to-white'>
-            <div className='w-1/2 lg:w-1/3 bg-[#f1fad9] p-10 shadow-xl rounded-md'>
-                <h1 className='text-2xl font-bold text-center mb-6 text-[#617d70]'>
+
+            <title>ToyTopia | Reset Password</title>
+            
+            <div className='w-9/12 md:w-7/12 lg:w-5/12 bg-[#f1fad9] p-10 shadow-xl rounded-md'>
+                <h1 className='text-xl md:text-2xl font-bold text-center mb-6 text-[#617d70]'>
                     Reset Your Password
                 </h1>
                 <form onSubmit={handleReset} className='space-y-4'>

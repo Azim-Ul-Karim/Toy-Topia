@@ -7,7 +7,10 @@ const DetailsCard = ({ toy }) => {
 
     return (
         <div className='space-y-4 my-10'>
-            <img src={pictureURL} className='w-3/4 mx-auto h-110 object-cover rounded-lg border-2 border-gray-200' />
+
+            <title>ToyTopia | Toy Details</title>
+
+            <img src={pictureURL} className='lg:w-3/4 mx-auto h-70 md:h-80 lg:h-110 object-cover rounded-lg border-2 border-gray-200' />
             <h2 className='font-bold text-2xl'>
                 {toyName}
             </h2>

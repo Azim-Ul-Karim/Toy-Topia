@@ -19,7 +19,7 @@ const ToyCard = ({ toy }) => {
             </div>
 
             <div className="p-4 space-y-2">
-                <h3 className="font-semibold text-lg">
+                <h3 className="font-semibold flex items-center min-h-15 md:text-lg">
                     {toyName}
                 </h3>
 

@@ -7,14 +7,14 @@ import { Link } from 'react-router';
 const Footer = () => {
     return (
         <section className='bg-linear-to-br from-[#FFF3E0] via-[#f3f5e4] to-[#F3E5F5]'>
-            <div className='grid grid-cols-4 gap-16 w-11/12 mx-auto p-4 md:py-8'>
+            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 w-11/12 mx-auto p-4 md:py-8'>
                 <div>
                     <Link to='/'>
                         <h2 className='bagel-fat-one-regular font-bold text-2xl md:text-3xl lg:text-4xl'>
                             <span className='text-[#9bc1d3]'>Toy</span> <span className='text-[#978955]'>Topia</span>
                         </h2>
                     </Link>
-                    <p className='mt-6 text-justify text-accent'>
+                    <p className='mt-3 md:mt-6 text-justify text-accent'>
                         A vibrant and playful online marketplace for kids' toys, encouraging families to discover and support local toy sellers.
                     </p>
                 </div>
@@ -53,7 +53,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='pb-4 md:pb-8 text-center'>
+            <div className='mt-4 md:mt-0 pb-4 md:pb-8 text-center'>
                 <p>
                     Made with 💖 for families everywhere.
                 </p>

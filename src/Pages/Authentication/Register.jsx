@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash, FaUserPlus } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthContext';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -12,7 +12,8 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const navigate = useNavigate();
+    const location = useLocation();
+        const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -48,7 +49,7 @@ const Register = () => {
                     .then(() => {
                         setUser({ ...user, displayName: name, photoURL: photo });
                         toast.success('Registration Successful!');
-                        navigate('/')
+                        navigate(location.state ? location.state : '/');
                     })
                     .catch(error => {
                         console.log(error);
@@ -67,6 +68,7 @@ const Register = () => {
                 console.log(user);
                 setUser(user);
                 toast.success('Registration Successful!');
+                navigate(location.state ? location.state : '/');
             })
             .catch(error => {
                 console.log(error);
@@ -75,11 +77,14 @@ const Register = () => {
 
     return (
         <div className='bg-linear-to-br from-[#F3E5F5] to-white flex justify-center items-center'>
-            <div className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
-                <h1 className='text-center font-bold text-3xl text-[#656e2f]'>
+
+            <title>ToyTopia | Register</title>
+
+            <div className='w-10/12 md:8-12 lg:w-6/12 my-10 bg-[#f1fad9] p-8 md:p-15 shadow-xl rounded-md'>
+                <h1 className='text-center font-bold text-2xl md:text-3xl text-[#656e2f]'>
                     Join The Fun!
                 </h1>
-                <p className='text-center font-medium text-lg mt-4 mb-8 text-accent'>
+                <p className='text-center font-medium md:text-lg mt-4 mb-8 text-accent'>
                     Create your account and start exploring...
                 </p>
 

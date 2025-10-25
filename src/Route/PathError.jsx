@@ -7,8 +7,11 @@ const PathError = () => {
 
     return (
         <section className='bg-linear-to-br from-yellow-100 via-pink-100 to-purple-100'>
-            <div className='flex flex-col items-center text-center'>
-                <img src="https://i.postimg.cc/hGcj0Rt0/error-404.png" className='my-10' />
+
+            <title>Error - 404</title>
+
+            <div className='flex flex-col items-center text-center min-h-screen'>
+                <img src="https://i.postimg.cc/hGcj0Rt0/error-404.png" className='my-10 p-4' />
                 <h1 className='mt-10 font-semibold text-3xl md:text-4xl lg:text-5xl'>
                     Oops ! Page Not Found !!!
                 </h1>

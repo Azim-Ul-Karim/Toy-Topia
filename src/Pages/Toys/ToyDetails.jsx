@@ -22,7 +22,7 @@ const ToyDetails = () => {
     }
 
     return (
-        <div className='w-8/12 mx-auto'>
+        <div className='w-11/12 md:9/12 lg:8/12 mx-auto'>
             <h2 className='font-semibold text-xl my-10'>
                 Toy Details
             </h2>
@@ -30,7 +30,7 @@ const ToyDetails = () => {
             <DetailsCard toy={toy}></DetailsCard>
 
             <div className='my-10 p-6 border-2 border-gray-200 rounded-lg shadow-sm md:w-4/5 mx-auto'>
-                <h3 className='text-2xl font-semibold mb-4 text-[#058338]'>
+                <h3 className='text-xl md:text-2xl font-semibold mb-4 text-[#058338]'>
                     Try This Toy Before You Buy!
                 </h3>
                 <form onSubmit={handleTry} className='space-y-4'>

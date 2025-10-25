@@ -8,13 +8,13 @@ const Why = () => {
     return (
         <div>
             <div className='text-center py-15'>
-                <h1 className='text-4xl font-bold'>
+                <h1 className='text-xl md:text-3xl lg:text-4xl font-bold'>
                     Why Choose Us?
                 </h1>
                 <p className='mt-5 mb-12 text-accent text-lg font-medium'>
                     See how families in our community are making memories with their favorite toys...
                 </p>
-                <div className='grid grid-cols-4 w-7xl mx-auto gap-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-10/12 mx-auto gap-5'>
                     <div className="bg-linear-to-br from-[#fbeed8] to-white p-10 rounded-xl border-2 border-gray-300 flex flex-col items-center justify-center space-y-3">
                         <span className='text-[#48751b]'>
                             <VscWorkspaceTrusted size={40}></VscWorkspaceTrusted>

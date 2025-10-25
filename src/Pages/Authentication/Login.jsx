@@ -24,7 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(`${location.state ? location.state : '/'}`)
+                navigate(location.state ? location.state : '/');
                 setUser(user);
             })
             .catch(error => {
@@ -37,6 +37,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(location.state ? location.state : '/');
                 setUser(user);
             })
             .catch(error => {
@@ -46,11 +47,14 @@ const Login = () => {
 
     return (
         <div className='bg-linear-to-br from-[#F3E5F5] to-white flex justify-center items-center'>
-            <div className='w-1/2 lg:w-1/3 my-10 bg-[#f1fad9] p-15 shadow-xl rounded-md'>
-                <h1 className='text-center font-bold text-3xl text-[#617d70]'>
+
+            <title>ToyTopia | Login</title>
+
+            <div className='w-10/12 md:8-12 lg:w-6/12 my-10 bg-[#f1fad9] p-8 md:p-15 shadow-xl rounded-md'>
+                <h1 className='text-center font-bold text-2xl md:text-3xl text-[#617d70]'>
                     Welcome Back!
                 </h1>
-                <p className='text-center font-medium text-lg mt-4 mb-8 text-accent'>
+                <p className='text-center font-medium md:text-lg mt-4 mb-8 text-accent'>
                     Login to continue exploration...
                 </p>
 
