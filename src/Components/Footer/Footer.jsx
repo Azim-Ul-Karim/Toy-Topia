@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 const Footer = () => {
     return (
         <section className='bg-linear-to-br from-[#FFF3E0] via-[#f3f5e4] to-[#F3E5F5]'>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 w-11/12 mx-auto p-4 md:py-8'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 lg:gap-16 w-11/12 mx-auto p-4 md:py-8'>
                 <div>
                     <Link to='/'>
                         <h2 className='bagel-fat-one-regular font-bold text-2xl md:text-3xl lg:text-4xl'>
@@ -19,7 +19,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-                <div>
+                <div className='text-center'>
                     <h3 className='text-lg font-semibold'>
                         Quick Links
                     </h3>
@@ -31,21 +31,10 @@ const Footer = () => {
                 </div>
 
                 <div>
-                    <h3 className='text-lg font-semibold'>
-                        Legal
-                    </h3>
-                    <div className='flex flex-col gap-1.5 mt-4 text-accent'>
-                        <Link to='/'>Terms of Services</Link>
-                        <Link to='/'>Privacy Policy</Link>
-                        <Link to='/'>Refund Policy</Link>
-                    </div>
-                </div>
-
-                <div>
                     <h3 className='text-lg font-medium'>
                         Follow Us
                     </h3>
-                    <div className='flex gap-1.5 mt-4 text-accent'>
+                    <div className='flex gap-2.5 mt-4 text-accent'>
                         <Link to='https://workspace.google.com/intl/en-US/gmail/'><TfiEmail></TfiEmail></Link>
                         <Link to='https://www.facebook.com/'><FaFacebookF></FaFacebookF></Link>
                         <Link to='https://www.whatsapp.com/'><FaWhatsapp></FaWhatsapp></Link>

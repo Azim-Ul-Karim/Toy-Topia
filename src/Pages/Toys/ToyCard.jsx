@@ -4,8 +4,7 @@ import { GoPackage } from 'react-icons/go';
 import { Link } from 'react-router';
 
 const ToyCard = ({ toy }) => {
-
-    const { toyId, pictureURL, toyName, rating, price, availableQuantity } = toy;
+    const { toyId, pictureURL, toyName, rating, price, availableQuantity, description } = toy;
 
     return (
         <div className="bg-white rounded-xl shadow-md border border-pink-200 overflow-hidden">
@@ -13,7 +12,7 @@ const ToyCard = ({ toy }) => {
                 <img src={pictureURL} className="w-full h-60 object-cover" />
 
                 <div className="absolute top-2 right-2 bg-white/90 text-[#c44109] text-sm font-medium flex items-center gap-1 px-2 py-1 rounded-xl shadow-md">
-                    <FaStar></FaStar>
+                    <FaStar />
                     {rating}
                 </div>
             </div>
@@ -23,12 +22,16 @@ const ToyCard = ({ toy }) => {
                     {toyName}
                 </h3>
 
-                <div className="flex justify-between items-center">
+                <p className="text-gray-600 text-sm line-clamp-2">
+                    {description}
+                </p>
+
+                <div className="flex justify-between items-center mt-1.5">
                     <p className="text-[#069683] font-semibold">
                         ${price}
                     </p>
                     <div className="flex items-center text-gray-500 text-sm gap-1">
-                        <GoPackage></GoPackage>
+                        <GoPackage />
                         {availableQuantity} Available
                     </div>
                 </div>

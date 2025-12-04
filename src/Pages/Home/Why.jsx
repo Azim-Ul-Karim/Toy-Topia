@@ -56,7 +56,7 @@ const Why = () => {
                             <RiUserCommunityLine size={40}></RiUserCommunityLine>
                         </span>
                         <h3 className='font-bold text-xl text-[#787744]'>
-                           Community Driven
+                            Community Driven
                         </h3>
                         <p className='text-accent'>
                             Support local businesses

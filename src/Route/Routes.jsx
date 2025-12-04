@@ -11,6 +11,8 @@ import ToyDetails from "../Pages/Toys/ToyDetails";
 import PrivateRoute from "../Contexts/PrivateRoute/PrivateRoute";
 import ForgetPassword from "../Pages/Authentication/ForgetPassword";
 import Feedback from "../Pages/Feedback/Feedback";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Support from "../Pages/Support/Support";
 
 export const router = createBrowserRouter([
     {
@@ -33,12 +35,18 @@ export const router = createBrowserRouter([
             {
                 path: '/toy-details/:id',
                 element: (
-                    <PrivateRoute>
-                        <ToyDetails></ToyDetails>
-                    </PrivateRoute>
+                    <ToyDetails></ToyDetails>
                 ),
                 loader: () => fetch(`/Toys.json`),
                 hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: 'about-us',
+                Component: AboutUs
+            },
+            {
+                path: 'support',
+                Component: Support
             },
             {
                 path: 'login',
@@ -61,8 +69,8 @@ export const router = createBrowserRouter([
                 )
             },
             {
-                path:'feedback',
-                element:(
+                path: 'feedback',
+                element: (
                     <PrivateRoute>
                         <Feedback></Feedback>
                     </PrivateRoute>

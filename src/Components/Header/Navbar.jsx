@@ -51,6 +51,8 @@ const Navbar = () => {
             <div className={`md:hidden flex flex-col gap-2 absolute bg-[#fdfcf3] rounded-lg shadow-md p-4 w-48 left-4 transition-all duration-300 ${mobile ? 'top-13' : '-top-60'}`}>
                 <NavLink to='/' onClick={() => setMobile(false)}>Home</NavLink>
                 <NavLink to='/toys' onClick={() => setMobile(false)}>Toys</NavLink>
+                <NavLink to='/about-us' onClick={() => setMobile(false)}>About Us</NavLink>
+                <NavLink to='/support' onClick={() => setMobile(false)}>Support</NavLink>
                 {
                     user ? (
                         <>
@@ -74,6 +76,8 @@ const Navbar = () => {
                 <div className='flex items-center justify-between gap-10'>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/toys'>Toys</NavLink>
+                    <NavLink to='/about-us'>About Us</NavLink>
+                    <NavLink to='/support'>Support</NavLink>
                     {
                         user && <>
                             <NavLink to='/profile'>My Profile</NavLink>

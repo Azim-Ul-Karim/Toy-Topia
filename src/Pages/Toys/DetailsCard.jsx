@@ -6,7 +6,7 @@ const DetailsCard = ({ toy }) => {
     const { pictureURL, toyName, sellerName, sellerEmail, price, rating, availableQuantity, description, subCategory } = toy;
 
     return (
-        <div className='space-y-4 my-10'>
+        <div className='lg:w-6/8 mx-auto space-y-4 my-10'>
 
             <title>ToyTopia | Toy Details</title>
 

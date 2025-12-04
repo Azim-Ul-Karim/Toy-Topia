@@ -5,6 +5,7 @@ import ToyCard from '../Toys/ToyCard';
 import Why from './Why';
 import Community from './Community';
 import Aos from 'aos';
+import { FaPaperPlane } from 'react-icons/fa';
 
 const Home = () => {
 
@@ -20,9 +21,20 @@ const Home = () => {
 
             <title>ToyTopia | Home</title>
 
-            <h1 data-aos='zoom-in' className='text-2xl md:text-4xl font-extrabold text-[#a57aa6] inline-block animate-marquee p-15'>
-                Welcome to <span className='bagel-fat-one-regular'><span className='text-[#9bc1d3]'>Toy </span><span className='text-[#978955]'>Topia</span></span> <span className='text-[#a57aa6]'>.....</span>
-            </h1>
+            <div className="w-full overflow-hidden pt-5">
+                <h1
+                    data-aos="zoom-in"
+                    className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#a57aa6] 
+        whitespace-nowrap animate-marquee px-4"
+                >
+                    Welcome to{" "}
+                    <span className="bagel-fat-one-regular">
+                        <span className="text-[#9bc1d3]">Toy </span>
+                        <span className="text-[#978955]">Topia</span>
+                    </span>{" "}
+                    <span className="text-[#a57aa6]">.....</span>
+                </h1>
+            </div>
 
             <Slider></Slider>
             <div className='text-center my-15'>
@@ -40,6 +52,32 @@ const Home = () => {
             </div>
             <Why></Why>
             <Community></Community>
+
+            <section className='pb-15 bg-gray-100 px-4'>
+                <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-700">
+                    Stay Updated With ToyTopia!
+                </h2>
+
+                <p className="text-center mt-4 text-gray-600 text-lg">
+                    Get exclusive offers, new arrivals, and early access directly in your inbox.
+                </p>
+
+                <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
+                    <input
+                        type="email"
+                        placeholder="Enter your email..."
+                        className="w-full md:w-96 px-4 py-3 bg-base-100 rounded-lg border border-gray-300 
+                    focus:outline-none shadow-sm"
+                    />
+
+                    <button
+                        className="flex items-center gap-2 bg-[#7b5772]
+                    text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-lg transition">
+                        Subscribe
+                        <FaPaperPlane />
+                    </button>
+                </div>
+            </section>
         </div>
     );
 };

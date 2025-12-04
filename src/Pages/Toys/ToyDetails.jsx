@@ -22,8 +22,8 @@ const ToyDetails = () => {
     }
 
     return (
-        <div className='w-11/12 md:9/12 lg:8/12 mx-auto'>
-            <h2 className='font-semibold text-xl my-10'>
+        <div className='w-11/12 md:5/7 lg:5/8 mx-auto'>
+            <h2 className='font-semibold text-xl my-10 px-4'>
                 Toy Details
             </h2>
 
